@@ -41,8 +41,8 @@ class Controller(Screen):
         ser.write('tp0' + '\r\n')
 
 class PTC(App):
-    username = StringProperty(None)
-    password = StringProperty(None)
+    pan = StringProperty(None)
+    tilt = StringProperty(None)
     def build(self):
         manager = ScreenManager()
         manager.add_widget(Controller(name='tilt'))

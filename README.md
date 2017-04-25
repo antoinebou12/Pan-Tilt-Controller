@@ -15,3 +15,7 @@
 		pp0 
 		Move Tilt 0 
 		tp0
+
+#	Run the program 
+	python PTC.py
+	python PTC-command.py

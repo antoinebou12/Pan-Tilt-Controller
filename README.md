@@ -1,9 +1,10 @@
-#	PAN-TILT CONTROLLER FOR PTU-46-17.5
+#	SIMPLE PRECISE PAN-TILT CONTROLLER FOR PTU-46-17.5
 #	Requirement libary
+		-Python 2.7
 		-Pyserial
 		-Kivy(GUI)
 #	PTC-command
-	Read the instruction manual and put the command in cmd
+	Read the instruction manual and put the command in command line
 	Basic command 
 		Reset
 		r

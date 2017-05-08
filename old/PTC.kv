@@ -1,0 +1,50 @@
+<Controller>:
+    BoxLayout
+        id: GUI
+        orientation: 'vertical'
+        padding: [10,50,10,50]
+        spacing: 50
+
+        Label:
+            text: 'PTC'
+            font_size: 32
+
+        BoxLayout:
+            orientation: 'vertical'
+
+            Label:
+                text: 'pan[-1000,1500]'
+                font_size: 14
+                halign: 'left'
+                text_size: root.width-20, 20
+
+            TextInput:
+                id: pan
+                multiline:False
+                font_size: 18
+                focus: True
+
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                text: 'tilt[-885,585]'
+                halign: 'left'
+                font_size: 14
+                text_size: root.width-20, 20
+
+            TextInput:
+                id: tilt
+                multiline:False
+                font_size: 18
+                focus: True
+
+        Button:
+            text: 'OK'
+            font_size: 18
+
+            on_press: root.do_move(pan.text, tilt.text)
+        Button:
+            text: 'Reset'
+            font_size: 18
+
+            on_press: root.do_reset(pan.text, tilt.text)

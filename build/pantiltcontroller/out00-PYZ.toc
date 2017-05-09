@@ -1,4 +1,4 @@
-('C:\\Users\\antoine.boucher\\Desktop\\Pan-Tilt\\build\\pantiltcontroller\\out00-PYZ.pyz',
+('C:\\Users\\antoine.boucher\\Desktop\\Pan-Tilt-Controller\\build\\pantiltcontroller\\out00-PYZ.pyz',
  [('os',
    'c:\\users\\antoine.boucher\\appdata\\local\\continuum\\anaconda2\\lib\\os.py',
    'PYMODULE'),

@@ -76,12 +76,11 @@ class DialogControl(QDialog,QWidget):
     def Control(self):
         global positionPan
         global positionTilt
-        self.addDialog = QDialog()
+        self.addDialog = QDialog(None, Qt.WindowSystemMenuHint | Qt.WindowTitleHint)
         self.addDialog.setWindowTitle('Control')
         self.addDialog.setWindowIcon(QIcon('image\Algolux.png'))
-        self.addDialog.resize(500, 500)
+        self.addDialog.resize(100, 100)
         layout = QGridLayout()
-        layout.addWidget(QLabel('Use the left and right arrow key to control pan of the device and up and down arrow key to control the tilt of the device'))
         self.up = QPushButton(u'\u25b2')
         self.down = QPushButton(u'\u25bc')
         self.left =QPushButton(u'\u25c0')
@@ -137,13 +136,13 @@ class MenuFile(QMainWindow,DialogControl):
 
     def Menu(self):
 
-        openFile = QAction('Open', self)
+        openFile = QAction('Control', self)
         openFile.setShortcut('Ctrl+O')
         openFile.setStatusTip('Control')
         openFile.triggered.connect(self.Control)
 
         menubar = self.menuBar()
-        fileMenu = menubar.addMenu('&Device')
+        fileMenu = menubar.addMenu('&Control')
         fileMenu.addAction(openFile)
 
         self.resize(widthApp, heightApp)
@@ -158,6 +157,7 @@ class FormWidget(QWidget):
         self.UI()
 
     def UI(self):
+        self.textBox()
         global positionPan
         global positionTilt
         self.panLabel = QLabel('Pan')
@@ -179,6 +179,7 @@ class FormWidget(QWidget):
         self.textBox()
         self.ok.clicked.connect(lambda: self.buttonClick(self.ok))
         self.reset.clicked.connect(lambda: self.buttonClick(self.reset))
+        self.textBox()
 
     def textBox(self):
         self.out = ''
@@ -187,12 +188,13 @@ class FormWidget(QWidget):
             self.out += ser.read(1)
         if self.out != '':
             self.out =  self.out
-        self.logView.append(self.out)  # append string
-        QApplication.processEvents()  # update gui for pyqt
+        self.logView.append(self.out)
+        QApplication.processEvents()
 
     def buttonClick(self, button):
         global positionPan
         global positionTilt
+        self.textBox()
         if button ==  self.ok:
             panText = self.pan.text()
             tiltText = self.tilt.text()

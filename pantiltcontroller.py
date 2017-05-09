@@ -76,11 +76,12 @@ class DialogControl(QDialog,QWidget):
     def Control(self):
         global positionPan
         global positionTilt
-        self.addDialog = QDialog(None, Qt.WindowSystemMenuHint | Qt.WindowTitleHint)
+        self.addDialog = QDialog()
         self.addDialog.setWindowTitle('Control')
         self.addDialog.setWindowIcon(QIcon('image\Algolux.png'))
-        self.addDialog.resize(100, 100)
+        self.addDialog.resize(500, 500)
         layout = QGridLayout()
+        layout.addWidget(QLabel('Use the left and right arrow key to control pan of the device and up and down arrow key to control the tilt of the device'))
         self.up = QPushButton(u'\u25b2')
         self.down = QPushButton(u'\u25bc')
         self.left =QPushButton(u'\u25c0')
@@ -136,13 +137,13 @@ class MenuFile(QMainWindow,DialogControl):
 
     def Menu(self):
 
-        openFile = QAction('Control', self)
+        openFile = QAction('Open', self)
         openFile.setShortcut('Ctrl+O')
         openFile.setStatusTip('Control')
         openFile.triggered.connect(self.Control)
 
         menubar = self.menuBar()
-        fileMenu = menubar.addMenu('&Controller')
+        fileMenu = menubar.addMenu('&Device')
         fileMenu.addAction(openFile)
 
         self.resize(widthApp, heightApp)

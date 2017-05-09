@@ -2,9 +2,9 @@ import sys
 import serial
 import time
 from win32api import GetSystemMetrics
-from PyQt5.QtWidgets import QMainWindow, QAction,qApp, QApplication, QWidget, QFileDialog, QLineEdit, QPushButton,QLabel, QColumnView, QFileSystemModel, QSplitter, QTreeView, QListView, QTextEdit,QDialog, QVBoxLayout, QGridLayout, QMessageBox
-from PyQt5.QtGui import QIcon, QPixmap, QKeyEvent
-from PyQt5.QtCore import QDir, Qt, QEvent
+from PyQt5.QtWidgets import QMainWindow, QAction,qApp, QApplication, QWidget, QLineEdit, QPushButton,QLabel, QTextEdit,QDialog,QGridLayout
+from PyQt5.QtGui import QIcon
+from PyQt5.QtCore import Qt, QEvent
 
 global positionPan
 global positionTilt
@@ -54,12 +54,12 @@ class DialogControl(QDialog,QWidget):
                 #print 'up'
                 positionTilt = int(positionTilt + 5)
                 #print 'tp' + str(positionTilt) + '\r\n'
-                ser.write('tp' + str(positionTilt - 10) + '\r\n')
+                ser.write('tp' + str(positionTilt) + '\r\n')
             elif event.key() == 16777237:
                 #print 'down'
                 positionTilt = int(positionTilt - 5)
                 #print 'tp' + str(positionTilt) + '\r\n'
-                ser.write('tp' + str(positionTilt - 10) + '\r\n')
+                ser.write('tp' + str(positionTilt) + '\r\n')
             elif event.key() == 16777234:
                 #print 'left'
                 positionPan = int(positionPan - 5)
@@ -103,21 +103,21 @@ class DialogControl(QDialog,QWidget):
         global positionTilt
         if button == self.up:
             print 'up'
-            positionTilt = int(positionTilt - 10)
+            positionTilt = int(positionTilt - 5)
             print 'pp' + str(positionTilt) + '\r\n'
             ser.write('tp' + str(positionTilt) + '\r\n')
         if button == self.down:
-            positionTilt = int(positionTilt + 10)
+            positionTilt = int(positionTilt + 5)
             print 'pp' + str(positionTilt) + '\r\n'
             ser.write('tp' + str(positionTilt) + '\r\n')
 
         if button == self.left:
-            positionPan = int(positionPan - 10)
+            positionPan = int(positionPan - 5)
             print 'pp' + str(positionPan) + '\r\n'
             ser.write('pp' + str(positionPan) + '\r\n')
 
         if button == self.right:
-            positionPan = int(positionPan + 10)
+            positionPan = int(positionPan + 5)
             print 'pp' + str(positionPan) + '\r\n'
             ser.write('pp' + str(positionPan) + '\r\n')
         if button == self.ok:
@@ -178,7 +178,6 @@ class FormWidget(QWidget):
         self.textBox()
         self.ok.clicked.connect(lambda: self.buttonClick(self.ok))
         self.reset.clicked.connect(lambda: self.buttonClick(self.reset))
-        self.textBox()
 
     def textBox(self):
         self.out = ''
@@ -193,7 +192,6 @@ class FormWidget(QWidget):
     def buttonClick(self, button):
         global positionPan
         global positionTilt
-        self.textBox()
         if button ==  self.ok:
             panText = self.pan.text()
             tiltText = self.tilt.text()

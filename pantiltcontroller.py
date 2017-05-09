@@ -157,7 +157,6 @@ class FormWidget(QWidget):
         self.UI()
 
     def UI(self):
-        self.textBox()
         global positionPan
         global positionTilt
         self.panLabel = QLabel('Pan')

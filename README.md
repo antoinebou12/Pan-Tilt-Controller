@@ -1,6 +1,6 @@
-# SIMPLE PRECISE PAN-TILT CONTROLLER FOR PTU-46-17.5
+# Pan-tilt controller for ptu-46-17.5
 ## App download
-    PTC_0.9.1.zip 
+    PTC_0.9.5.zip 
 ## Requirement libary
     -Python 2.7
     -Pyserial

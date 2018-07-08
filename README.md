@@ -23,4 +23,5 @@ Read the instruction manual and put the command in command line
     python PTC-command.py
 ### Old Version PTC_0.8.1
     python old\PTC.py
+### Don't Change to change the COM (default COM3)
 	
